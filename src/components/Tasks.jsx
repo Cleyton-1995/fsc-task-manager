@@ -1,11 +1,11 @@
-import { useState } from "react";
-import Header from "./Header";
+import { useState } from 'react';
+import Header from './Header';
 
 export function Tasks() {
   const [inputValue, setInputValue] = useState();
   const [messages, setMessages] = useState([
-    "Hello world",
-    "FSC is the best course in the world",
+    'Hello world',
+    'FSC is the best course in the world',
   ]);
 
   function handleButtonClick() {
@@ -35,7 +35,7 @@ export function Tasks() {
       <div>
         <ul>
           {messages.map((message) => {
-            return <li>{message}</li>;
+            return <li key={messages}>{message}</li>;
           })}
         </ul>
       </div>
