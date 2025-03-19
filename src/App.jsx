@@ -1,11 +1,9 @@
-import { Tasks } from './components/Tasks';
-
+import Sidebar from './components/Sidebar';
 function App() {
   return (
-    <h1 className="mt-2 text-red-500">
-      <Tasks />
-      <p>abc</p>
-    </h1>
+    <div>
+      <Sidebar />
+    </div>
   );
 }
 
