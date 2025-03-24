@@ -9,11 +9,33 @@ import { useState } from 'react';
 import TASKS from '../constants/tasks';
 import TasksItem from './TasksItem';
 export default function Tasks() {
-  const [tasks] = useState(TASKS);
+  const [tasks, seTasks] = useState(TASKS);
 
   const morningTasks = tasks.filter((task) => task.time === 'morning');
   const afternoonTasks = tasks.filter((task) => task.time === 'afternoon');
   const eveningTasks = tasks.filter((task) => task.time === 'evening');
+
+  function handleTaskCheckoutClick(taskId) {
+    const newTasks = tasks.map((task) => {
+      if (task.id !== taskId) {
+        return task;
+      }
+
+      if (task.status === 'not_started') {
+        return { ...task, status: 'in_progress' };
+      }
+      if (task.status === 'in_progress') {
+        return { ...task, status: 'done' };
+      }
+      if (task.status === 'done') {
+        return { ...task, status: 'not_started' };
+      }
+
+      return task;
+    });
+
+    seTasks(newTasks);
+  }
 
   return (
     <div className="w-full px-8 py-16">
@@ -42,7 +64,11 @@ export default function Tasks() {
           <TasksSeparator title="Manhã" icon={<SunIcon />} />
 
           {morningTasks.map((task) => (
-            <TasksItem key={task.id} task={task} />
+            <TasksItem
+              key={task.id}
+              task={task}
+              handleTaskCheckoutClick={handleTaskCheckoutClick}
+            />
           ))}
         </div>
 
@@ -50,7 +76,11 @@ export default function Tasks() {
           <TasksSeparator title="Tarde" icon={<CloudIcon />} />
 
           {afternoonTasks.map((task) => (
-            <TasksItem key={task.id} task={task} />
+            <TasksItem
+              key={task.id}
+              task={task}
+              handleTaskCheckoutClick={handleTaskCheckoutClick}
+            />
           ))}
         </div>
 
@@ -58,7 +88,11 @@ export default function Tasks() {
           <TasksSeparator title="Noite" icon={<MoonIcon />} />
 
           {eveningTasks.map((task) => (
-            <TasksItem key={task.id} task={task} />
+            <TasksItem
+              key={task.id}
+              task={task}
+              handleTaskCheckoutClick={handleTaskCheckoutClick}
+            />
           ))}
         </div>
       </div>
