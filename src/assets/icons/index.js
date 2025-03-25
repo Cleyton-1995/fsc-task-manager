@@ -1,13 +1,13 @@
-import AddIcon from '../assets/icons/add.svg?react';
-import TrashIcon from '../assets/icons/trash.svg?react';
-import SunIcon from '../assets/icons/sun.svg?react';
-import MoonIcon from '../assets/icons/moon.svg?react';
-import CloudIcon from '../assets/icons/cloud-sun.svg?react';
-import CkeckIcon from '../assets/icons/check.svg?react';
-import LoaderIcon from '../assets/icons/loader.svg?react';
-import DetailsIcon from '../assets/icons/details.svg?react';
-import HomeIcon from '../assets/icons/home.svg?react';
-import TaskIcon from '../assets/icons/tasks.svg?react';
+import AddIcon from './add.svg?react';
+import TrashIcon from './trash.svg?react';
+import SunIcon from './sun.svg?react';
+import MoonIcon from './moon.svg?react';
+import CloudIcon from './cloud-sun.svg?react';
+import CkeckIcon from './check.svg?react';
+import LoaderIcon from './loader.svg?react';
+import DetailsIcon from './details.svg?react';
+import HomeIcon from './home.svg?react';
+import TaskIcon from './tasks.svg?react';
 
 export {
   AddIcon,
