@@ -1,5 +1,4 @@
 import { CkeckIcon, DetailsIcon, LoaderIcon, TrashIcon } from '../assets/icons';
-
 import Button from './Button';
 
 export default function TasksItem({

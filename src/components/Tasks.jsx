@@ -1,3 +1,6 @@
+import { useState } from 'react';
+import { toast } from 'sonner';
+
 import {
   AddIcon,
   CloudIcon,
@@ -5,13 +8,10 @@ import {
   SunIcon,
   TrashIcon,
 } from '../assets/icons';
-
-import Button from './Button';
-import TasksSeparator from './TasksSeparator';
-import { useState } from 'react';
 import TASKS from '../constants/tasks';
+import Button from './Button';
 import TasksItem from './TasksItem';
-import { toast } from 'sonner';
+import TasksSeparator from './TasksSeparator';
 export default function Tasks() {
   const [tasks, seTasks] = useState(TASKS);
 
