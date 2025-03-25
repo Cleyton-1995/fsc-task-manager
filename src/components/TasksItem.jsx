@@ -1,8 +1,6 @@
-import CkeckIcon from '../assets/icons/check.svg?react';
-import LoaderIcon from '../assets/icons/loader.svg?react';
-import DetailsIcon from '../assets/icons/details.svg?react';
+import { CkeckIcon, DetailsIcon, LoaderIcon, TrashIcon } from '../assets/icons';
+
 import Button from './Button';
-import TrashIcon from '../assets/icons/trash.svg?react';
 
 export default function TasksItem({
   task,

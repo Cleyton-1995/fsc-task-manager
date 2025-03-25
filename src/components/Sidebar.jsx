@@ -1,6 +1,6 @@
 import SidebarButton from './SidebarButton';
-import HomeIcon from '../assets/icons/home.svg?react';
-import TaskIcon from '../assets/icons/tasks.svg?react';
+import { HomeIcon, TaskIcon } from '../assets/icons';
+
 export default function Sidebar() {
   return (
     <div className="h-screen w-72 bg-white">
