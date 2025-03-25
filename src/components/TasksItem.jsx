@@ -1,7 +1,14 @@
 import CkeckIcon from '../assets/icons/check.svg?react';
 import LoaderIcon from '../assets/icons/loader.svg?react';
 import DetailsIcon from '../assets/icons/details.svg?react';
-export default function TasksItem({ task, handleTaskCheckoutClick }) {
+import Button from './Button';
+import TrashIcon from '../assets/icons/trash.svg?react';
+
+export default function TasksItem({
+  task,
+  handleTaskCheckoutClick,
+  handleTaskDeleteClick,
+}) {
   function getStatusClasses() {
     if (task.status === 'done') {
       return 'bg-[#00ADB5] text-[#00ADB5]';
@@ -37,9 +44,15 @@ export default function TasksItem({ task, handleTaskCheckoutClick }) {
         {task.title}
       </div>
 
-      <a href="#" className="transition hover:opacity-75">
-        <DetailsIcon />
-      </a>
+      <div className="flex items-center gap-2">
+        <Button variant="ghost" onClick={() => handleTaskDeleteClick(task.id)}>
+          <TrashIcon className="text-[#9A9C9F]" />
+        </Button>
+
+        <a href="#" className="transition hover:opacity-75">
+          <DetailsIcon />
+        </a>
+      </div>
     </div>
   );
 }

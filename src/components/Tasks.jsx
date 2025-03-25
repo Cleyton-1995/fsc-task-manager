@@ -15,6 +15,11 @@ export default function Tasks() {
   const afternoonTasks = tasks.filter((task) => task.time === 'afternoon');
   const eveningTasks = tasks.filter((task) => task.time === 'evening');
 
+  function handleTaskDeleteClick(taskId) {
+    const newTasks = tasks.filter((task) => task.id !== taskId);
+    seTasks(newTasks);
+  }
+
   function handleTaskCheckoutClick(taskId) {
     const newTasks = tasks.map((task) => {
       if (task.id !== taskId) {
@@ -68,6 +73,7 @@ export default function Tasks() {
               key={task.id}
               task={task}
               handleTaskCheckoutClick={handleTaskCheckoutClick}
+              handleTaskDeleteClick={handleTaskDeleteClick}
             />
           ))}
         </div>
@@ -80,6 +86,7 @@ export default function Tasks() {
               key={task.id}
               task={task}
               handleTaskCheckoutClick={handleTaskCheckoutClick}
+              handleTaskDeleteClick={handleTaskDeleteClick}
             />
           ))}
         </div>
@@ -92,6 +99,7 @@ export default function Tasks() {
               key={task.id}
               task={task}
               handleTaskCheckoutClick={handleTaskCheckoutClick}
+              handleTaskDeleteClick={handleTaskDeleteClick}
             />
           ))}
         </div>

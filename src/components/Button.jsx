@@ -1,4 +1,4 @@
-export default function Button({ children, variant = 'primary' }) {
+export default function Button({ children, variant = 'primary', ...rest }) {
   function getVariantClass() {
     if (variant === 'primary') {
       return ' text-white bg-[#00ADB5] ';
@@ -12,6 +12,7 @@ export default function Button({ children, variant = 'primary' }) {
   return (
     <button
       className={`flex items-center gap-1 rounded-md px-3 py-1 text-xs font-semibold transition hover:opacity-75 ${getVariantClass()}`}
+      {...rest}
     >
       {children}
     </button>
