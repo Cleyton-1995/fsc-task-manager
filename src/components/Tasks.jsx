@@ -72,7 +72,10 @@ export default function Tasks() {
             <AddIcon />{' '}
           </Button>
 
-          <AddTasksDialog isOpen={addTasksDialogIsOpen} />
+          <AddTasksDialog
+            isOpen={addTasksDialogIsOpen}
+            handleClose={() => setAddTasksDialogIsOpen(false)}
+          />
         </div>
       </div>
 
