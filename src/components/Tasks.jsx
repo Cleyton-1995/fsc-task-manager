@@ -14,7 +14,7 @@ import Button from './Button';
 import TasksItem from './TasksItem';
 import TasksSeparator from './TasksSeparator';
 export default function Tasks() {
-  const [tasks, seTasks] = useState(TASKS);
+  const [tasks, setTasks] = useState(TASKS);
   const [addTasksDialogIsOpen, setAddTasksDialogIsOpen] = useState(false);
 
   const morningTasks = tasks.filter((task) => task.time === 'morning');
@@ -23,7 +23,7 @@ export default function Tasks() {
 
   function handleTaskDeleteClick(taskId) {
     const newTasks = tasks.filter((task) => task.id !== taskId);
-    seTasks(newTasks);
+    setTasks(newTasks);
     toast.success('Tarefa deletada com sucesso!');
   }
 
@@ -49,7 +49,12 @@ export default function Tasks() {
       return task;
     });
 
-    seTasks(newTasks);
+    setTasks(newTasks);
+  }
+
+  function handleAddTaskSubmit(task) {
+    setTasks([...tasks, task]);
+    toast.success('Tarefa adicionada com sucesso!');
   }
 
   return (
@@ -75,6 +80,7 @@ export default function Tasks() {
           <AddTasksDialog
             isOpen={addTasksDialogIsOpen}
             handleClose={() => setAddTasksDialogIsOpen(false)}
+            handleSubmit={handleAddTaskSubmit}
           />
         </div>
       </div>
