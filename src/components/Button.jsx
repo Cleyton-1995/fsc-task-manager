@@ -7,15 +7,15 @@ export default function Button({
 }) {
   function getVariantClass() {
     if (variant === 'primary') {
-      return ' text-white bg-[#00ADB5] ';
+      return ' text-white bg-brand-primary ';
     }
 
     if (variant === 'ghost') {
-      return 'bg-transparent text-[#35383E]';
+      return 'bg-transparent text-brand-dark-blue';
     }
 
     if (variant === 'secondary') {
-      return 'bg-[#EEEEEE] text-[#818181]';
+      return 'bg-brand-light-gray text-brand-dark-gray';
     }
   }
 

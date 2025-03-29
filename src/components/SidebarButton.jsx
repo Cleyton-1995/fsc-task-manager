@@ -1,11 +1,11 @@
 export default function SidebarButton({ children, variant }) {
   function getVariantClass() {
     if (variant === 'unselected') {
-      return 'text-[#35383E]';
+      return 'text-brand-dark-blue';
     }
 
     if (variant === 'selected') {
-      return 'bg-[#E6F7F8] text-[#00ADB5]';
+      return 'bg-brand-primary bg-opacity-15 text-brand-primary';
     }
   }
 
