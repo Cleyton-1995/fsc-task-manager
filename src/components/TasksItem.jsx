@@ -8,10 +8,10 @@ export default function TasksItem({
 }) {
   function getStatusClasses() {
     if (task.status === 'done') {
-      return 'bg-brand-primary text-brand-primary';
+      return 'bg-[#00ADB5] text-[#00ADB5]';
     }
     if (task.status === 'in_progress') {
-      return 'bg-brand-process text-brand-process';
+      return 'bg-[#FFAA04] text-[#FFAA04]';
     }
     if (task.status === 'not_started') {
       return 'bg-brand-dark-blue bg-opacity-10 text-brand-dark-blue';
@@ -42,8 +42,8 @@ export default function TasksItem({
       </div>
 
       <div className="flex items-center gap-2">
-        <Button variant="ghost" onClick={() => handleTaskDeleteClick(task.id)}>
-          <TrashIcon className="text-brand-text-gray" />
+        <Button color="ghost" onClick={() => handleTaskDeleteClick(task.id)}>
+          <TrashIcon className="text-[#9A9C9F]" />
         </Button>
 
         <a href="#" className="transition hover:opacity-75">
