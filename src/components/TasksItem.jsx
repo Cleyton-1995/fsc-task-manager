@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import { CkeckIcon, DetailsIcon, LoaderIcon, TrashIcon } from '../assets/icons';
 import Button from './Button';
 
@@ -53,3 +55,15 @@ export default function TasksItem({
     </div>
   );
 }
+
+TasksItem.propTypes = {
+  task: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    time: PropTypes.oneOf(['morning', 'afternoon', 'evening']).isRequired,
+    status: PropTypes.oneOf(['not_started', 'in_progress', 'done']).isRequired,
+  }).isRequired,
+  handleTaskCheckoutClick: PropTypes.func.isRequired,
+  handleTaskDeleteClick: PropTypes.func.isRequired,
+};
