@@ -41,20 +41,6 @@
       "description": "Meditar 10 minutos",
       "time": "evening",
       "status": "not_started"
-    },
-    {
-      "id": "327e6da6-9640-4860-af8a-ac71f43803af",
-      "title": "estudar ",
-      "time": "afternoon",
-      "description": "React",
-      "status": "not_started"
-    },
-    {
-      "id": "0433c03c-be6e-4f33-89fd-763b84e1a1bc",
-      "title": "trinar",
-      "time": "evening",
-      "description": "academia",
-      "status": "not_started"
     }
   ]
 }

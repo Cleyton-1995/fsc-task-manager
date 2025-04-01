@@ -31,17 +31,7 @@ export default function Tasks() {
   const afternoonTasks = tasks.filter((task) => task.time === 'afternoon');
   const eveningTasks = tasks.filter((task) => task.time === 'evening');
 
-  async function handleTaskDeleteClick(taskId) {
-    const response = await fetch(`http://localhost:3000/tasks/${taskId}`, {
-      method: 'DELETE',
-    });
-
-    if (!response.ok) {
-      return toast.error(
-        'Erro ao deletar a tarefa. Por favor, tente novamente'
-      );
-    }
-
+  async function onDeleteTaskSuccess(taskId) {
     const newTasks = tasks.filter((task) => task.id !== taskId);
     setTasks(newTasks);
     toast.success('Tarefa deletada com sucesso!');
@@ -124,7 +114,7 @@ export default function Tasks() {
               key={task.id}
               task={task}
               handleTaskCheckoutClick={handleTaskCheckoutClick}
-              handleTaskDeleteClick={handleTaskDeleteClick}
+              onDeleteSuccess={onDeleteTaskSuccess}
             />
           ))}
         </div>
@@ -137,7 +127,7 @@ export default function Tasks() {
               key={task.id}
               task={task}
               handleTaskCheckoutClick={handleTaskCheckoutClick}
-              handleTaskDeleteClick={handleTaskDeleteClick}
+              onDeleteSuccess={onDeleteTaskSuccess}
             />
           ))}
         </div>
@@ -150,7 +140,7 @@ export default function Tasks() {
               key={task.id}
               task={task}
               handleTaskCheckoutClick={handleTaskCheckoutClick}
-              handleTaskDeleteClick={handleTaskDeleteClick}
+              onDeleteSuccess={onDeleteTaskSuccess}
             />
           ))}
         </div>
