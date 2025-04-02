@@ -1,5 +1,7 @@
 import AddIcon from './add.svg?react';
+import ArrowLeftIcon from './arrow-left.svg?react';
 import CkeckIcon from './check.svg?react';
+import ChevronRighthIcon from './chevron-right.svg?react';
 import CloudIcon from './cloud-sun.svg?react';
 import DetailsIcon from './details.svg?react';
 import HomeIcon from './home.svg?react';
@@ -11,6 +13,8 @@ import TrashIcon from './trash.svg?react';
 
 export {
   AddIcon,
+  ArrowLeftIcon,
+  ChevronRighthIcon,
   CkeckIcon,
   CloudIcon,
   DetailsIcon,
