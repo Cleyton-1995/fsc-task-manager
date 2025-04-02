@@ -41,6 +41,13 @@
       "description": "Meditar 10 minutos",
       "time": "evening",
       "status": "not_started"
+    },
+    {
+      "id": "51aa4080-71b1-4683-a777-1332cf21d120",
+      "title": "Estudar para prova",
+      "time": "morning",
+      "description": "Curso de Análise e desenvolvimento de Sistemas",
+      "status": "not_started"
     }
   ]
 }
