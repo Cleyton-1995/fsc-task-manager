@@ -10,7 +10,7 @@ export default function TasksItem({
   handleTaskCheckoutClick,
   onDeleteSuccess,
 }) {
-  const [deleteTasksIsLoading, setDeleteIsLoading] = useState(false);
+  const [deleteIsLoading, setDeleteIsLoading] = useState(false);
 
   async function handleDeleteClick() {
     setDeleteIsLoading(true);
@@ -19,7 +19,7 @@ export default function TasksItem({
     });
 
     if (!response.ok) {
-      setDeleteIsLoading(true);
+      setDeleteIsLoading(false);
       return toast.error(
         'Erro ao deletar a tarefa. Por favor, tente novamente'
       );
@@ -68,9 +68,9 @@ export default function TasksItem({
         <Button
           color="ghost"
           onClick={handleDeleteClick}
-          disabled={deleteTasksIsLoading}
+          disabled={deleteIsLoading}
         >
-          {deleteTasksIsLoading ? (
+          {deleteIsLoading ? (
             <LoaderIcon className="animate-spin text-brand-text-gray" />
           ) : (
             <TrashIcon className="text-[#9A9C9F]" />
