@@ -58,6 +58,16 @@ export default function AddTasksDialog({
       description: '',
     });
   }
+
+  function handleCancelClick() {
+    reset({
+      title: '',
+      time: 'morning',
+      description: '',
+    });
+    handleClose();
+  }
+
   return (
     <CSSTransition
       nodeRef={nodeRef}
@@ -134,7 +144,7 @@ export default function AddTasksDialog({
                     size="large"
                     className="w-full"
                     color="secondary"
-                    onClick={handleClose}
+                    onClick={handleCancelClick}
                     type="button"
                   >
                     Cancelar
