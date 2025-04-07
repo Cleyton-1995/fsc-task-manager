@@ -114,7 +114,6 @@ export default function AddTasksDialog({
                   ref={titleRef}
                   disabled={isLoading}
                 />
-                disabled={isLoading}
                 <TimeSelect
                   error={timeError?.message}
                   ref={timeRef}
