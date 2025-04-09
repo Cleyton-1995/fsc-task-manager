@@ -33,13 +33,6 @@ export default function Tasks() {
   const afternoonTasks = tasks?.filter((task) => task.time === 'afternoon');
   const eveningTasks = tasks?.filter((task) => task.time === 'evening');
 
-  async function onDeleteTaskSuccess(taskId) {
-    queryClient.setQueryData('tasks', (currentTasks) => {
-      return currentTasks.filter((task) => task.id !== taskId);
-    });
-    toast.success('Tarefa deletada com sucesso!');
-  }
-
   function handleTaskCheckoutClick(taskId) {
     const newTasks = tasks.map((task) => {
       if (task.id !== taskId) {
@@ -120,7 +113,6 @@ export default function Tasks() {
               key={task.id}
               task={task}
               handleTaskCheckoutClick={handleTaskCheckoutClick}
-              onDeleteSuccess={onDeleteTaskSuccess}
             />
           ))}
         </div>
@@ -139,7 +131,6 @@ export default function Tasks() {
               key={task.id}
               task={task}
               handleTaskCheckoutClick={handleTaskCheckoutClick}
-              onDeleteSuccess={onDeleteTaskSuccess}
             />
           ))}
         </div>
@@ -158,7 +149,6 @@ export default function Tasks() {
               key={task.id}
               task={task}
               handleTaskCheckoutClick={handleTaskCheckoutClick}
-              onDeleteSuccess={onDeleteTaskSuccess}
             />
           ))}
         </div>
