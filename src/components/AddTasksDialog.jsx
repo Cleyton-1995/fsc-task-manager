@@ -1,6 +1,5 @@
 import './AddTasksDialog.css';
 
-import { useMutation, useQueryClient } from '@tanstack/react-query';
 import PropTypes from 'prop-types';
 import { useRef } from 'react';
 import { createPortal } from 'react-dom';
@@ -10,26 +9,13 @@ import { toast } from 'sonner';
 import { v4 } from 'uuid';
 
 import { LoaderIcon } from '../assets/icons';
+import useAddTasks from '../hooks/data/useAddTasks';
 import Button from './Button';
 import Input from './Input';
 import TimeSelect from './TimeSelect';
 
 export default function AddTasksDialog({ isOpen, handleClose }) {
-  const queryClient = useQueryClient();
-
-  const { mutate } = useMutation({
-    mutationKey: 'add-task',
-    mutationFn: async (task) => {
-      const response = await fetch('http://localhost:3000/tasks', {
-        method: 'POST',
-        body: JSON.stringify(task),
-      });
-      if (!response.ok) {
-        throw new Error();
-      }
-      return response.json();
-    },
-  });
+  const { mutate: addTask } = useAddTasks();
 
   const {
     register,
@@ -55,11 +41,8 @@ export default function AddTasksDialog({ isOpen, handleClose }) {
       status: 'not_started',
     };
 
-    mutate(task, {
+    addTask(task, {
       onSuccess: () => {
-        queryClient.setQueryData('tasks', (currentTasks) => {
-          return [...currentTasks, task];
-        });
         handleClose();
         reset({
           title: '',
