@@ -58,17 +58,6 @@ export default function Tasks() {
     queryClient.setQueryData('tasks', newTasks);
   }
 
-  async function onTaskSubmitSuccess(task) {
-    queryClient.setQueryData('tasks', (currentTasks) => {
-      return [...currentTasks, task];
-    });
-    toast.success('Tarefa adicionada com sucesso!');
-  }
-
-  function onTaskSubmitError() {
-    toast('Erro ao adicionar a tarefa. Por favor, tente novamente.');
-  }
-
   return (
     <div className="w-full space-y-6 px-8 py-16">
       <div className="flex w-full justify-between">
@@ -92,8 +81,6 @@ export default function Tasks() {
           <AddTasksDialog
             isOpen={addTasksDialogIsOpen}
             handleClose={() => setAddTasksDialogIsOpen(false)}
-            onSubmitSuccess={onTaskSubmitSuccess}
-            onSubmitError={onTaskSubmitError}
           />
         </div>
       </div>
