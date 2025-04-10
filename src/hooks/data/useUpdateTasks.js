@@ -1,4 +1,5 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
+import axios from 'axios';
 
 export default function useUpdateTasks(taskId) {
   const queryClient = useQueryClient();
@@ -6,18 +7,15 @@ export default function useUpdateTasks(taskId) {
   return useMutation({
     mutationKey: ['updateTask', taskId],
     mutationFn: async (newTask) => {
-      const response = await fetch(`http://localhost:3000/tasks/${taskId}`, {
-        method: 'PATCH',
-        body: JSON.stringify({
+      const { data: updateTask } = await axios.patch(
+        `http://localhost:3000/tasks/${taskId}`,
+        {
           title: newTask.title.trim(),
           time: newTask.time.trim(),
           description: newTask.description.trim(),
-        }),
-      });
-      if (!response.ok) {
-        throw new Error();
-      }
-      const updateTask = await response.json();
+        }
+      );
+
       queryClient.setQueryData('tasks', (oldTasks) => {
         return oldTasks.map((oldTask) => {
           if (oldTask.id === taskId) {
