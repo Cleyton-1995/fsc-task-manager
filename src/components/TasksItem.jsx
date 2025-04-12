@@ -4,9 +4,10 @@ import { toast } from 'sonner';
 
 import { CkeckIcon, DetailsIcon, LoaderIcon, TrashIcon } from '../assets/icons';
 import useDeleteTasks from '../hooks/data/useDeleteTasks';
+import useUpdateTasks from '../hooks/data/useUpdateTasks';
 import Button from './Button';
 
-export default function TasksItem({ task, handleTaskCheckoutClick }) {
+export default function TasksItem({ task }) {
   const { mutate: deleteTask, isPending } = useDeleteTasks(task.id);
 
   async function handleDeleteClick() {
@@ -32,6 +33,34 @@ export default function TasksItem({ task, handleTaskCheckoutClick }) {
     }
   }
 
+  const { mutate } = useUpdateTasks(task.id);
+
+  function getNewStatus() {
+    if (task.status === 'not_started') {
+      return 'in_progress';
+    }
+    if (task.status === 'in_progress') {
+      return 'done';
+    }
+    return 'not_started';
+  }
+
+  function handleTaskCheckoutClick() {
+    mutate(
+      {
+        status: getNewStatus(),
+      },
+      {
+        onSuccess: () =>
+          toast.success('Status da tarefa atualizado com sucesso!'),
+        onError: () =>
+          toast.error(
+            'Erro ao atualizar status da tarefa. Por favor, tente novamente!'
+          ),
+      }
+    );
+  }
+
   return (
     <div
       className={`flex items-center justify-between gap-2 rounded-lg bg-opacity-10 px-4 py-3 text-sm transition ${getStatusClasses()}`}
@@ -44,7 +73,7 @@ export default function TasksItem({ task, handleTaskCheckoutClick }) {
             type="checkbox"
             checked={task.status === 'done'}
             className="absolute h-full w-full cursor-pointer opacity-0"
-            onChange={() => handleTaskCheckoutClick(task.id)}
+            onChange={handleTaskCheckoutClick}
           />
 
           {task.status === 'done' && <CkeckIcon />}

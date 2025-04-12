@@ -1,45 +1,14 @@
-import { useQueryClient } from '@tanstack/react-query';
-import { toast } from 'sonner';
-
 import { CloudIcon, MoonIcon, SunIcon } from '../assets/icons';
 import useGetTasks from '../hooks/data/useGetTasks';
-import { taskQueryKeys } from '../keys/query';
 import Header from './Header';
 import TasksItem from './TasksItem';
 import TasksSeparator from './TasksSeparator';
 export default function Tasks() {
-  const queryClient = useQueryClient();
-
   const { data: tasks } = useGetTasks();
 
   const morningTasks = tasks?.filter((task) => task.time === 'morning');
   const afternoonTasks = tasks?.filter((task) => task.time === 'afternoon');
   const eveningTasks = tasks?.filter((task) => task.time === 'evening');
-
-  function handleTaskCheckoutClick(taskId) {
-    const newTasks = tasks.map((task) => {
-      if (task.id !== taskId) {
-        return task;
-      }
-
-      if (task.status === 'not_started') {
-        toast.success('Tarefa iniciada com sucesso!');
-        return { ...task, status: 'in_progress' };
-      }
-      if (task.status === 'in_progress') {
-        toast.success('Tarefa concluída com sucesso!');
-        return { ...task, status: 'done' };
-      }
-      if (task.status === 'done') {
-        toast.success('Tarefa reiniciada com sucesso!');
-        return { ...task, status: 'not_started' };
-      }
-
-      return task;
-    });
-
-    queryClient.setQueryData(taskQueryKeys.getAll(), newTasks);
-  }
 
   return (
     <div className="w-full space-y-6 px-8 py-16">
@@ -56,11 +25,7 @@ export default function Tasks() {
           )}
 
           {morningTasks?.map((task) => (
-            <TasksItem
-              key={task.id}
-              task={task}
-              handleTaskCheckoutClick={handleTaskCheckoutClick}
-            />
+            <TasksItem key={task.id} task={task} />
           ))}
         </div>
 
@@ -74,11 +39,7 @@ export default function Tasks() {
           )}
 
           {afternoonTasks?.map((task) => (
-            <TasksItem
-              key={task.id}
-              task={task}
-              handleTaskCheckoutClick={handleTaskCheckoutClick}
-            />
+            <TasksItem key={task.id} task={task} />
           ))}
         </div>
 
@@ -92,11 +53,7 @@ export default function Tasks() {
           )}
 
           {eveningTasks?.map((task) => (
-            <TasksItem
-              key={task.id}
-              task={task}
-              handleTaskCheckoutClick={handleTaskCheckoutClick}
-            />
+            <TasksItem key={task.id} task={task} />
           ))}
         </div>
       </div>

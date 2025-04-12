@@ -5,21 +5,21 @@
       "title": "Estudar FSC",
       "description": "Estudar para a prova do FSC",
       "time": "morning",
-      "status": "done"
+      "status": "in_progress"
     },
     {
       "id": "3",
       "title": "Treinar",
       "description": "Treinar para a competição de natação",
       "time": "afternoon",
-      "status": "in_progress"
+      "status": "done"
     },
     {
       "id": "4",
       "title": "Fazer compras",
       "description": "Compras de ingredientes para o jantar",
       "time": "afternoon",
-      "status": "in_progress"
+      "status": "done"
     },
     {
       "id": "5",
@@ -33,13 +33,6 @@
       "title": "Meditar",
       "description": "Meditar 10 minutos",
       "time": "evening",
-      "status": "not_started"
-    },
-    {
-      "id": "dcb9fbcc-eb0b-4c58-98b2-67b55e650bcf",
-      "title": "teste",
-      "time": "morning",
-      "description": "teste",
       "status": "not_started"
     }
   ]
