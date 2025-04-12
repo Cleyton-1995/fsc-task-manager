@@ -1,25 +1,16 @@
 import { useQueryClient } from '@tanstack/react-query';
-import { useState } from 'react';
 import { toast } from 'sonner';
 
-import {
-  AddIcon,
-  CloudIcon,
-  MoonIcon,
-  SunIcon,
-  TrashIcon,
-} from '../assets/icons';
+import { CloudIcon, MoonIcon, SunIcon } from '../assets/icons';
 import useGetTasks from '../hooks/data/useGetTasks';
-import AddTasksDialog from './AddTasksDialog';
-import Button from './Button';
+import { taskQueryKeys } from '../keys/query';
+import Header from './Header';
 import TasksItem from './TasksItem';
 import TasksSeparator from './TasksSeparator';
 export default function Tasks() {
   const queryClient = useQueryClient();
 
   const { data: tasks } = useGetTasks();
-
-  const [addTasksDialogIsOpen, setAddTasksDialogIsOpen] = useState(false);
 
   const morningTasks = tasks?.filter((task) => task.time === 'morning');
   const afternoonTasks = tasks?.filter((task) => task.time === 'afternoon');
@@ -47,35 +38,12 @@ export default function Tasks() {
       return task;
     });
 
-    queryClient.setQueryData('tasks', newTasks);
+    queryClient.setQueryData(taskQueryKeys.getAll(), newTasks);
   }
 
   return (
     <div className="w-full space-y-6 px-8 py-16">
-      <div className="flex w-full justify-between">
-        <div>
-          <span className="text-xs font-semibold text-brand-primary">
-            Minhas Tarefas
-          </span>
-          <h1 className="text-xl font-semibold">Minhas Tarefas</h1>
-        </div>
-
-        <div className="flex items-center gap-3">
-          <Button color="ghost">
-            Limpar Tarefas
-            <TrashIcon />
-          </Button>
-          <Button onClick={() => setAddTasksDialogIsOpen(true)}>
-            Adicionar Tarefa
-            <AddIcon />{' '}
-          </Button>
-
-          <AddTasksDialog
-            isOpen={addTasksDialogIsOpen}
-            handleClose={() => setAddTasksDialogIsOpen(false)}
-          />
-        </div>
-      </div>
+      <Header subtitle="Minhas Tarefas" title="Minhas Tarefas" />
 
       <div className="rounded-xl bg-white p-6">
         <div className="space-y-3">
