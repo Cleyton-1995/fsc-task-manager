@@ -2,8 +2,8 @@
   "tasks": [
     {
       "id": "1",
-      "title": "Estudar FSC",
-      "description": "Estudar para a prova do FSC",
+      "title": "Estudar FSW",
+      "description": "Estudar para a prova do FSW",
       "time": "morning",
       "status": "in_progress"
     },
@@ -15,23 +15,9 @@
       "status": "done"
     },
     {
-      "id": "4",
-      "title": "Fazer compras",
-      "description": "Compras de ingredientes para o jantar",
-      "time": "afternoon",
-      "status": "done"
-    },
-    {
       "id": "5",
       "title": "Descansar",
       "description": "Assitir um filme com a família",
-      "time": "evening",
-      "status": "not_started"
-    },
-    {
-      "id": "6",
-      "title": "Meditar",
-      "description": "Meditar 10 minutos",
       "time": "evening",
       "status": "not_started"
     }

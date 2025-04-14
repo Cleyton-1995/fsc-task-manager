@@ -1,21 +1,11 @@
-import {
-  GlassWaterIcon,
-  LoaderIcon,
-  TaskIcon,
-  Tasks2Icon,
-} from '../assets/icons';
-import DashboardCard from '../components/DashboardCard';
+import DashboardCards from '../components/DashboardCards';
 import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
+import TasksItem from '../components/TasksItem';
 import useGetTasks from '../hooks/data/useGetTasks';
 
 export default function HomePage() {
   const { data: tasks } = useGetTasks();
-
-  const doneTasks = tasks?.filter((task) => task.status === 'done').length;
-  const inProgressTasks = tasks?.filter(
-    (task) => task.status === 'in_progress'
-  ).length;
 
   return (
     <div className="flex">
@@ -23,27 +13,30 @@ export default function HomePage() {
 
       <div className="w-full space-y-6 px-8 py-16">
         <Header subtitle="Dashboard" title="Dashboard" />
-        <div className="grid grid-cols-4 gap-9">
-          <DashboardCard
-            icon={<Tasks2Icon />}
-            mainText={tasks?.length}
-            secondaryText="Tarefas disponíveis"
-          />
-          <DashboardCard
-            icon={<TaskIcon />}
-            mainText={doneTasks}
-            secondaryText="Tarefas concluídas"
-          />
-          <DashboardCard
-            icon={<LoaderIcon className="animate-spin" />}
-            mainText={inProgressTasks}
-            secondaryText="Tarefas em andamento"
-          />
-          <DashboardCard
-            icon={<GlassWaterIcon />}
-            mainText="40%"
-            secondaryText="Água"
-          />
+        <DashboardCards />
+
+        <div className="grid grid-cols-[1.5fr,1fr] gap-6">
+          <div className="space-y-4 rounded-[10px] bg-white p-6">
+            <div>
+              <h3 className="text-xl font-semibold">Tarefas</h3>
+              <span className="text-sm text-brand-dark-gray">
+                Resumo das tarefas
+              </span>
+            </div>
+
+            <div className="space-y-3">
+              {tasks?.map((task) => (
+                <TasksItem key={task.id} task={task} />
+              ))}
+            </div>
+          </div>
+
+          <div className="flex items-center justify-center space-y-6 rounded-[10px] bg-white p-6">
+            <p className="text-brand-dark-gray">
+              Cada pequena ação de hoje te aproxima das grandes conquistas de
+              amanhã. Faça o que precisa ser feito!
+            </p>
+          </div>
         </div>
       </div>
     </div>

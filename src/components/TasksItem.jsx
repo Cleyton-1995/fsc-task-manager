@@ -29,7 +29,7 @@ export default function TasksItem({ task }) {
       return 'bg-[#FFAA04] text-[#FFAA04]';
     }
     if (task.status === 'not_started') {
-      return 'bg-brand-dark-blue bg-opacity-10 text-brand-dark-blue';
+      return 'bg-brand-dark-blue bg-opacity-5 text-brand-dark-blue';
     }
   }
 
