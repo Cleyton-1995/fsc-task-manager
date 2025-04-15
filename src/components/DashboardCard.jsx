@@ -7,7 +7,9 @@ export default function DashboardCard({ icon, mainText, secondaryText }) {
           {mainText}
         </p>
       </div>
-      {secondaryText}
+      <div className="items-center justify-center text-center">
+        {secondaryText}
+      </div>
     </div>
   );
 }
