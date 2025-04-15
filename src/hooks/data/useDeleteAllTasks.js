@@ -8,7 +8,11 @@ export default function useDeleteAllTasks() {
 
   return useMutation({
     mutationFn: async () => {
-      await api.delete('/tasks');
+      const { data: tasks } = await api.get('/tasks');
+
+      for (const task of tasks) {
+        await api.delete(`/tasks/${task.id}`);
+      }
     },
     onSuccess: () => {
       queryClient.setQueryData(taskQueryKeys.getAll(), []);
