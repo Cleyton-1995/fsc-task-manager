@@ -8,8 +8,7 @@ export default function useDeleteAllTasks() {
 
   return useMutation({
     mutationFn: async () => {
-      const { data: tasks } = await api.get('/tasks');
-      await Promise.all(tasks.map((task) => api.delete(`/tasks/${task.id}`)));
+      await api.delete('/tasks');
     },
     onSuccess: () => {
       queryClient.setQueryData(taskQueryKeys.getAll(), []);
